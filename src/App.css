@@ -1,3 +1,16 @@
 .App {
   text-align: center;
 }
+td {
+   width : 150px;
+}
+
+.container{
+  margin: 20px 50px;
+  border: solid 1px gainsboro;
+  padding: 20px 40px;
+}
+
+button{
+  margin: 5px;
+}
