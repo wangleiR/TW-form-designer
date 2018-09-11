@@ -41,8 +41,6 @@ class ItemList extends Component {
                                 />
                                 <button id={item.code} onClick={this.addItemToShoppingCart}>Add</button>
                             </div>
-
-
                         </tr>
                     </div>
                     )
