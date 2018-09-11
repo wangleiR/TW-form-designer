@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Button from "react-bootstrap/es/Button";
+import Table from "react-bootstrap/es/Table";
 
 class ShoppingCart extends Component {
 
@@ -21,20 +23,24 @@ class ShoppingCart extends Component {
         const list = this.props.list;
         return (
             <div>
+            <Table striped bordered condensed hover>
+                <tbody>
                 {
                     list.map(item =>(
-                            <div>
+
                                 <tr>
                                     <td>{item.name}</td>
                                     <td>{item.price}元/{item.unit}</td>
                                     <td>{item.discount}</td>
                                     <td>{item.amount}</td>
                                 </tr>
-                            </div>
+
                         )
                     )
                 }
-                <button onClick={this.checkout}>checkout</button>
+                </tbody>
+            </Table>
+                <Button onClick={this.checkout}>checkout</Button>
             </div>
         );
     }

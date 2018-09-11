@@ -3,6 +3,7 @@ import './App.css';
 import Data from './dataStore/data';
 import ItemList from './web/ItemList';
 import ShoppingCart from './web/ShoppingCart';
+import Button from "react-bootstrap/es/Button";
 
 class App extends Component {
     constructor(props) {
@@ -29,8 +30,8 @@ class App extends Component {
   render() {
     return (
         <div className="container">
-            <button onClick={this.isShowListPage}>List</button>
-            <button onClick={this.isShowShoppingCartPage}>ShoppingCart</button>
+            <Button bsStyle="info" onClick={this.isShowListPage}>List</Button>
+            <Button bsStyle="info" onClick={this.isShowShoppingCartPage}>ShoppingCart</Button>
             {this.state.isListPage ? (
                 <ItemList
                     list={this.state.items}
