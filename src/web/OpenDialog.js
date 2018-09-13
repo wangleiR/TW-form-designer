@@ -13,8 +13,22 @@ import connect from "react-redux/es/connect/connect";
 class OpenDialog extends React.Component{
     constructor(props){
         super(props);
+        this.state = {
+            type: "input",
+        }
     }
 
+    setItemType = (event) => {
+        this.setState({
+           type: event.target.value,
+        });
+    };
+    getItem = () =>{
+        return {
+            id: new Date().getTime(),
+            type: this.state.type,
+        }
+    };
 
     render() {
         const {
@@ -28,18 +42,18 @@ class OpenDialog extends React.Component{
                         <ModalTitle>Select Field Type</ModalTitle>
                     </ModalHeader>
                     <ModalBody>
-                        <FormGroup>
-                            <Radio name="radioGroup" id='inputText'>
+                        <FormGroup onChange={(event)=>this.setItemType(event)}>
+                            <Radio name="radioGroup" value='input' >
                                 Text Input
                             </Radio>
-                            <Radio name="radioGroup" id='datePicker'>
+                            <Radio name="radioGroup" value='date'>
                                 Date Picker
                             </Radio>
                         </FormGroup>
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button bsStyle="primary" onClick={onAddItem}>Add</Button>
+                        <Button bsStyle="primary" onClick={()=>onAddItem(this.getItem())}>Add</Button>
                         <Button onClick={onCloseDialog}>Close</Button>
                     </ModalFooter>
                 </ModalDialog>
@@ -54,11 +68,11 @@ const mapStateToProps = (state) => {
     }
 };
 
-const mapDispatchToProps = (dispatch,ownProps) => {
+const mapDispatchToProps = (dispatch) => {
     return {
-        onAddItem : (items,id) => {
-            dispatch({type:'ADD_ITEM',isOpenDialog: false, items : 'input', id : 4})
-            // dispatch({type:'ADD_ITEM',isOpenDialog: false, items : items, id : id})
+        onAddItem : (item) => {
+            console.log("1111"+item);
+            dispatch({type:'ADD_ITEM',isOpenDialog: false, items : item.type, id : item.id})
         },
         onCloseDialog : () => {
             dispatch({type:'CLOSE_DIALOG',isOpenDialog: false})

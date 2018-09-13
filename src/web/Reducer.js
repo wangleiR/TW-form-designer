@@ -1,11 +1,7 @@
 
 const initState = {
     isOpenDialog: false,
-    previewStatus: true,
-    items: [{
-        id:1,
-        type:'date',
-    }]
+    items: [],
 };
 
 const Reducer = (state = initState, action) => {
@@ -20,12 +16,6 @@ const Reducer = (state = initState, action) => {
                 ...state,
                 isOpenDialog: action.isOpenDialog,
             };
-        case 'IS_PREVIEW':
-            return {
-                ...state,
-                previewStatus: !state.previewStatus,
-            };
-
         case 'ADD_ITEM':
             return {
                 ...state,
